@@ -3,7 +3,7 @@ package main
 // keep track of max
 // keep track of current
 // loop through grid
-// - iresetting curIsland each time
+// - reset curIsland each loop
 // - implement bfs, passing pointers
 
 func maxAreaOfIsland(grid [][]int) int {
