@@ -23,7 +23,7 @@ func maxAreaOfIsland(grid [][]int) int {
 //   - sums current island
 //   - if current island is greater than or equal to max
 //       - modifies max
-// does a bfs of the following:
+// continue to search for other parts of the island. Do a bfs of the following:
 //   - above
 //   - below
 //   - right
