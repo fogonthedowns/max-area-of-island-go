@@ -12,7 +12,7 @@ func maxAreaOfIsland(grid [][]int) int {
 	for i := 0; i < len(grid); i++ {
 		for j := 0; j < len(grid[i]); j++ {
 			curIsland = 0
-			bfs(i, j, &grid, &curIsland, &maxIsland, false)
+			bfs(i, j, &grid, &curIsland, &maxIsland)
 		}
 	}
 	return maxIsland
@@ -30,7 +30,7 @@ func maxAreaOfIsland(grid [][]int) int {
 //   - left
 //     - each element has a bound protector
 
-func bfs(i int, j int, world *[][]int, curIsland *int, maxIsland *int, d bool) {
+func bfs(i int, j int, world *[][]int, curIsland *int, maxIsland *int) {
 	if (*world)[i][j] == 1 {
 		(*world)[i][j] = 0
 		*curIsland += 1
@@ -39,20 +39,24 @@ func bfs(i int, j int, world *[][]int, curIsland *int, maxIsland *int, d bool) {
 			*maxIsland = *curIsland
 		}
 
+		// next row
 		if i+1 <= len(*world)-1 {
-			bfs(i+1, j, world, curIsland, maxIsland, true)
+			bfs(i+1, j, world, curIsland, maxIsland)
 		}
 
+		// prev row
 		if i > 0 {
-			bfs(i-1, j, world, curIsland, maxIsland, true)
+			bfs(i-1, j, world, curIsland, maxIsland)
 		}
 
+		// next col
 		if j+1 <= len((*world)[i])-1 {
-			bfs(i, j+1, world, curIsland, maxIsland, true)
+			bfs(i, j+1, world, curIsland, maxIsland)
 		}
 
+		// prev col
 		if j > 0 {
-			bfs(i, j-1, world, curIsland, maxIsland, true)
+			bfs(i, j-1, world, curIsland, maxIsland)
 		}
 	}
 }
